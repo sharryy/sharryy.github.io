@@ -14,12 +14,12 @@ const Hero = () => {
                                 Hello <span/> I am
                             </div>
                             <h2 className="hero-title">
-                                Shary Dogesh
+                                Shary 
                             </h2>
                             <ul className="hero-services">
-                                <li>Gandu</li>
-                                <li>Chutia</li>
-                                <li>Lumd</li>
+                                <li>Lorem Ipsum</li>
+                                <li>Lorem Ipsum</li>
+                                <li>Lorem Ipsum</li>
                             </ul>
                             <a href='/resume.pdf' target='_blank' download className="btn btn-primary" style={{cursor: 'pointer'}}>Download Resume</a>
                         </div>
