@@ -1,4 +1,7 @@
-Welcome to my portfolio website, where I showcase my work and skills to the world. This website is so awesome, it will make your grandma jealous.
+# Introduction
+
+Welcome to my portfolio website, where I showcase my work and skills to the world. This website is so awesome, it will
+make jealous.
 
 # Quickstart
 
@@ -14,7 +17,8 @@ Welcome to my portfolio website, where I showcase my work and skills to the worl
 4. A contact page with a form that sends a message directly to my brain
 5. Bugs and Issues
 
-If you find a bug or have an issue with my website, please send a message to my psychic hotline and I'll get back to you as soon as possible.
+If you find a bug or have an issue with my website, please send a message to my psychic hotline and I'll get back to you
+as soon as possible.
 
 # License
 
