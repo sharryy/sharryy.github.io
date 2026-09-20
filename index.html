@@ -93,12 +93,13 @@
 
         /* a single postcard; grayscale until hover */
         .postcard {
-            width: 250px;
-            margin: 1.5rem 0 0.5rem;
+            float: right;
+            width: 200px;
+            margin: 0 0 1.25rem 2rem;
             padding: 10px 10px 0.6rem;
             background: #f2f0ea;
             border-radius: 2px;
-            transform: rotate(-2.5deg);
+            transform: rotate(2.5deg);
             box-shadow: 0 8px 22px rgba(0, 0, 0, 0.55);
             transition: transform 0.35s ease;
         }
@@ -127,6 +128,13 @@
             padding-top: 0.4rem;
         }
 
+        @media (max-width: 620px) {
+            .postcard {
+                float: none;
+                margin: 1.5rem auto;
+            }
+        }
+
         .links {
             margin-top: 3.5rem;
         }
@@ -139,6 +147,11 @@
 <body>
 <main>
     <p class="joke">.css.fear { position: relative, display: none}; /* even the AI won't fix this */</p>
+
+    <figure class="postcard" tabindex="0">
+        <img src="assets/postcard.jpg" alt="Sitting on a rock in front of a waterfall in Indonesia">
+        <figcaption>indonesia, 2025</figcaption>
+    </figure>
 
     <p>Hello I&rsquo;m</p>
     <h1>Shehryar Amin</h1>
@@ -165,11 +178,6 @@
             <span class="detail">query optimization, 3D modeling backend</span></li>
         <li><span class="detail">earlier: DevZone, Valyrian Systems, SplitTrip, Inisev, Flower Station</span></li>
     </ul>
-
-    <figure class="postcard" tabindex="0">
-        <img src="assets/postcard.jpg" alt="Sitting on a rock in front of a waterfall in Indonesia">
-        <figcaption>indonesia, 2025</figcaption>
-    </figure>
 
     <p class="links">
         <a href="https://github.com/sharryy" target="_blank" rel="noopener">Github</a>
