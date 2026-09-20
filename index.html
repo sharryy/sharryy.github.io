@@ -91,15 +91,25 @@
             color: var(--accent);
         }
 
-        /* a single postcard; grayscale until hover */
-        .postcard {
+        /* a small pile of postcards; grayscale until hover, fans apart on hover.
+           To add a card: copy a <figure class="postcard"> block inside .postcards
+           (up to 3 are styled). */
+        .postcards {
             float: right;
+            position: relative;
+            width: 210px;
+            height: 295px;
+            margin: 0 0 1.5rem 2rem;
+        }
+
+        .postcard {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 200px;
-            margin: 0 0 1.25rem 2rem;
             padding: 10px 10px 0.6rem;
             background: #f2f0ea;
             border-radius: 2px;
-            transform: rotate(2.5deg);
             box-shadow: 0 8px 22px rgba(0, 0, 0, 0.55);
             transition: transform 0.35s ease;
         }
@@ -111,13 +121,21 @@
             transition: filter 0.35s ease;
         }
 
-        .postcard:hover,
-        .postcard:focus-within {
-            transform: rotate(0deg) scale(1.02);
-        }
+        .postcard:nth-child(1) { transform: rotate(4deg) translateX(6px); }
+        .postcard:nth-child(2) { transform: rotate(-2.5deg); }
+        .postcard:nth-child(3) { transform: rotate(1.5deg) translate(3px, 4px); }
 
-        .postcard:hover img,
-        .postcard:focus-within img {
+        .postcards:hover .postcard:nth-child(1),
+        .postcards:focus-within .postcard:nth-child(1) { transform: rotate(7deg) translate(34%, 42%); }
+
+        .postcards:hover .postcard:nth-child(2),
+        .postcards:focus-within .postcard:nth-child(2) { transform: rotate(-4deg) translate(-5%, -3%); }
+
+        .postcards:hover .postcard:nth-child(3),
+        .postcards:focus-within .postcard:nth-child(3) { transform: rotate(2deg) translate(15%, 20%); }
+
+        .postcards:hover .postcard img,
+        .postcards:focus-within .postcard img {
             filter: grayscale(0) saturate(1.08);
         }
 
@@ -129,9 +147,9 @@
         }
 
         @media (max-width: 620px) {
-            .postcard {
+            .postcards {
                 float: none;
-                margin: 1.5rem auto;
+                margin: 1.5rem auto 3rem;
             }
         }
 
@@ -148,10 +166,16 @@
 <main>
     <p class="joke">.css.fear { position: relative, display: none}; /* even the AI won't fix this */</p>
 
-    <figure class="postcard" tabindex="0">
-        <img src="assets/postcard.jpg" alt="Sitting on a rock in front of a waterfall in Indonesia">
-        <figcaption>indonesia, 2025</figcaption>
-    </figure>
+    <div class="postcards" tabindex="0">
+        <figure class="postcard">
+            <img src="assets/postcard-thailand.jpg" alt="Freefall during a skydive over the Thai coast">
+            <figcaption>thailand, 2024</figcaption>
+        </figure>
+        <figure class="postcard">
+            <img src="assets/postcard.jpg" alt="Sitting on a rock in front of a waterfall in Indonesia">
+            <figcaption>indonesia, 2025</figcaption>
+        </figure>
+    </div>
 
     <p>Hello I&rsquo;m</p>
     <h1>Shehryar Amin</h1>
