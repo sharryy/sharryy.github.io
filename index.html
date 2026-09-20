@@ -91,62 +91,40 @@
             color: var(--accent);
         }
 
-        /* places: one deck of stacked cards per country; fans out on hover */
-        .decks {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2.75rem 2.5rem;
-            padding: 1rem 0 1.5rem;
+        /* a single postcard; grayscale until hover */
+        .postcard {
+            width: 250px;
+            margin: 1.5rem 0 0.5rem;
+            padding: 10px 10px 0.6rem;
+            background: #f2f0ea;
+            border-radius: 2px;
+            transform: rotate(-2.5deg);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.55);
+            transition: transform 0.35s ease;
         }
 
-        .deck {
-            position: relative;
-            width: 160px;
-            height: 160px;
-            outline: none;
-        }
-
-        .deck img {
-            position: absolute;
-            inset: 0;
+        .postcard img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 5px;
-            border: 1px solid #2a2d2b;
+            display: block;
             filter: grayscale(1) contrast(1.05);
-            transition: transform 0.35s ease, filter 0.35s ease;
+            transition: filter 0.35s ease;
         }
 
-        .deck:hover img,
-        .deck:focus-within img {
-            filter: grayscale(0) saturate(1.1);
+        .postcard:hover,
+        .postcard:focus-within {
+            transform: rotate(0deg) scale(1.02);
         }
 
-        .deck img:nth-child(1) { transform: rotate(-5deg); }
-        .deck img:nth-child(2) { transform: rotate(4deg) translateX(3%); }
-        .deck img:nth-child(3) { transform: rotate(-1deg); }
-        .deck img:nth-child(4) { transform: rotate(2deg) translateX(-2%); }
+        .postcard:hover img,
+        .postcard:focus-within img {
+            filter: grayscale(0) saturate(1.08);
+        }
 
-        .deck:hover img:nth-child(1),
-        .deck:focus-within img:nth-child(1) { transform: rotate(-9deg) translate(-40%, -4%); }
-
-        .deck:hover img:nth-child(2),
-        .deck:focus-within img:nth-child(2) { transform: rotate(9deg) translate(40%, -4%); }
-
-        .deck:hover img:nth-child(3),
-        .deck:focus-within img:nth-child(3) { transform: rotate(0deg) translateY(-14%); }
-
-        .deck:hover img:nth-child(4),
-        .deck:focus-within img:nth-child(4) { transform: rotate(3deg) translateY(16%); }
-
-        .deck figcaption {
-            position: absolute;
-            bottom: -1.8rem;
-            width: 100%;
+        .postcard figcaption {
+            color: #4a4a44;
+            font-size: 0.8rem;
             text-align: center;
-            color: var(--dim);
-            font-size: 0.85rem;
+            padding-top: 0.4rem;
         }
 
         .links {
@@ -165,7 +143,7 @@
     <p>Hello I&rsquo;m</p>
     <h1>Shehryar Amin</h1>
     <p class="tagline">A software engineer who knows their way around backend-stuff, but still
-        Googles syntax like everyone else</p>
+        asks the AI for syntax like everyone else</p>
 
     <h2>now</h2>
     <ul>
@@ -188,51 +166,10 @@
         <li><span class="detail">earlier: DevZone, Valyrian Systems, SplitTrip, Inisev, Flower Station</span></li>
     </ul>
 
-    <!-- PLACES: one .deck per country, 2-4 imgs each (cards fan out and colour up on hover).
-         To add a country: copy a <figure class="deck"> block.
-         To add a photo: convert it with
-         magick IN.jpg -strip -resize 600x600^ -gravity center -extent 600x600 -quality 85 assets/travel/OUT.jpg
-         then add an <img> line inside the deck (replace the placeholder imgs). -->
-    <h2>places</h2>
-    <div class="decks">
-        <figure class="deck" tabindex="0">
-            <img src="assets/travel/thailand-1.jpg" alt="At Dropzone Thailand before a skydive" loading="lazy">
-            <img src="assets/travel/thailand-2.jpg" alt="Freefall over the Thai coast" loading="lazy">
-            <img src="assets/travel/thailand-3.jpg" alt="Boarding the jump plane" loading="lazy">
-            <img src="assets/travel/thailand-4.jpg" alt="Suited up before the jump" loading="lazy">
-            <figcaption>thailand</figcaption>
-        </figure>
-        <figure class="deck" tabindex="0">
-            <img src="assets/travel/morocco-1.jpg" alt="Morocco placeholder" loading="lazy">
-            <img src="assets/travel/morocco-2.jpg" alt="Morocco placeholder" loading="lazy">
-            <figcaption>morocco</figcaption>
-        </figure>
-        <figure class="deck" tabindex="0">
-            <img src="assets/travel/indonesia-1.jpg" alt="Indonesia placeholder" loading="lazy">
-            <img src="assets/travel/indonesia-2.jpg" alt="Indonesia placeholder" loading="lazy">
-            <figcaption>indonesia</figcaption>
-        </figure>
-        <figure class="deck" tabindex="0">
-            <img src="assets/travel/malaysia-1.jpg" alt="Malaysia placeholder" loading="lazy">
-            <img src="assets/travel/malaysia-2.jpg" alt="Malaysia placeholder" loading="lazy">
-            <figcaption>malaysia</figcaption>
-        </figure>
-        <figure class="deck" tabindex="0">
-            <img src="assets/travel/singapore-1.jpg" alt="Singapore placeholder" loading="lazy">
-            <img src="assets/travel/singapore-2.jpg" alt="Singapore placeholder" loading="lazy">
-            <figcaption>singapore</figcaption>
-        </figure>
-        <figure class="deck" tabindex="0">
-            <img src="assets/travel/sweden-1.jpg" alt="Sweden placeholder" loading="lazy">
-            <img src="assets/travel/sweden-2.jpg" alt="Sweden placeholder" loading="lazy">
-            <figcaption>sweden</figcaption>
-        </figure>
-        <figure class="deck" tabindex="0">
-            <img src="assets/travel/belgium-1.jpg" alt="Belgium placeholder" loading="lazy">
-            <img src="assets/travel/belgium-2.jpg" alt="Belgium placeholder" loading="lazy">
-            <figcaption>belgium</figcaption>
-        </figure>
-    </div>
+    <figure class="postcard" tabindex="0">
+        <img src="assets/postcard.jpg" alt="Sitting on a rock in front of a waterfall in Indonesia">
+        <figcaption>indonesia, 2025</figcaption>
+    </figure>
 
     <p class="links">
         <a href="https://github.com/sharryy" target="_blank" rel="noopener">Github</a>
