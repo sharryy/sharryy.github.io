@@ -91,54 +91,56 @@
             color: var(--accent);
         }
 
-        .places {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-auto-flow: dense;
-            gap: 0.5rem;
+        /* places: one deck of stacked cards per country; fans out on hover */
+        .decks {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem 4rem;
+            padding: 1rem 0 1.5rem;
         }
 
-        /* mosaic: every 1st of 3 tiles is a big 2x2 */
-        .places figure:nth-child(3n + 1) {
-            grid-column: span 2;
-            grid-row: span 2;
-        }
-
-        .places figure {
+        .deck {
             position: relative;
-            overflow: hidden;
-            border-radius: 4px;
+            width: 190px;
+            height: 190px;
+            outline: none;
         }
 
-        .places figure img {
+        .deck img {
+            position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
-            aspect-ratio: 1;
             object-fit: cover;
-            display: block;
-            filter: grayscale(1) contrast(1.05);
-            transition: filter 0.35s ease;
+            border-radius: 5px;
+            border: 1px solid #2a2d2b;
+            transition: transform 0.35s ease;
         }
 
-        .places figure:hover img,
-        .places figure:focus-within img {
-            filter: grayscale(0) saturate(1.15);
-        }
+        .deck img:nth-child(1) { transform: rotate(-5deg); }
+        .deck img:nth-child(2) { transform: rotate(4deg) translateX(3%); }
+        .deck img:nth-child(3) { transform: rotate(-1deg); }
+        .deck img:nth-child(4) { transform: rotate(2deg) translateX(-2%); }
 
-        .places figcaption {
+        .deck:hover img:nth-child(1),
+        .deck:focus-within img:nth-child(1) { transform: rotate(-9deg) translate(-40%, -4%); }
+
+        .deck:hover img:nth-child(2),
+        .deck:focus-within img:nth-child(2) { transform: rotate(9deg) translate(40%, -4%); }
+
+        .deck:hover img:nth-child(3),
+        .deck:focus-within img:nth-child(3) { transform: rotate(0deg) translateY(-14%); }
+
+        .deck:hover img:nth-child(4),
+        .deck:focus-within img:nth-child(4) { transform: rotate(3deg) translateY(16%); }
+
+        .deck figcaption {
             position: absolute;
-            left: 0.5rem;
-            bottom: 0.4rem;
-            color: #eee;
-            font-size: 0.8rem;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
-            opacity: 0;
-            transition: opacity 0.35s ease;
-        }
-
-        .places figure:hover figcaption,
-        .places figure:focus-within figcaption {
-            opacity: 1;
+            bottom: -1.8rem;
+            width: 100%;
+            text-align: center;
+            color: var(--dim);
+            font-size: 0.85rem;
         }
 
         .links {
@@ -180,22 +182,19 @@
         <li><span class="detail">earlier: DevZone, Valyrian Systems, SplitTrip, Inisev, Flower Station</span></li>
     </ul>
 
-    <!-- PLACES: to add a photo, drop an 800x800 jpg in assets/travel/ and copy a <figure> block.
-         Resize + strip metadata with:
-         magick IN.jpg -strip -resize 800x800^ -gravity center -extent 800x800 -quality 82 assets/travel/OUT.jpg -->
+    <!-- PLACES: one .deck per country, 2-4 imgs each (cards fan out on hover).
+         To add a country: copy a <figure class="deck"> block.
+         To add a photo: convert it with
+         magick IN.jpg -strip -resize 400x400^ -gravity center -extent 400x400 \
+           -colorspace Gray -brightness-contrast 5x22 -ordered-dither o4x4 -quality 90 assets/travel/OUT.jpg
+         then add an <img> line inside the deck. -->
     <h2>places</h2>
-    <div class="places">
-        <figure>
-            <img src="assets/travel/thailand-dropzone.jpg" alt="At Dropzone Thailand before a skydive" loading="lazy">
+    <div class="decks">
+        <figure class="deck" tabindex="0">
+            <img src="assets/travel/thailand-1.jpg" alt="At Dropzone Thailand before a skydive" loading="lazy">
+            <img src="assets/travel/thailand-2.jpg" alt="Boarding the jump plane" loading="lazy">
+            <img src="assets/travel/thailand-3.jpg" alt="Freefall over the Thai coast" loading="lazy">
             <figcaption>thailand</figcaption>
-        </figure>
-        <figure>
-            <img src="assets/travel/thailand-plane.jpg" alt="Boarding the jump plane" loading="lazy">
-            <figcaption>thailand</figcaption>
-        </figure>
-        <figure>
-            <img src="assets/travel/thailand-freefall.jpg" alt="Freefall over the Thai coast" loading="lazy">
-            <figcaption>thailand, from above</figcaption>
         </figure>
     </div>
 
