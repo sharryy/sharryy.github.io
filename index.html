@@ -102,8 +102,7 @@
             margin: 0 0 1.5rem 2rem;
         }
 
-        /* DOM order is pile order: the last .postcard sits on top.
-           Clicking a card re-appends it, bringing it to the top. */
+        /* DOM order is pile order: the last .postcard sits on top */
         .postcard {
             position: absolute;
             top: 0;
@@ -113,7 +112,6 @@
             background: #f2f0ea;
             border-radius: 2px;
             box-shadow: 0 8px 22px rgba(0, 0, 0, 0.55);
-            cursor: pointer;
             transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
         }
 
@@ -222,13 +220,5 @@
         <a href="resume.pdf" target="_blank" rel="noopener">Resume</a>
     </p>
 </main>
-<script>
-    document.querySelectorAll('.postcards').forEach(function (pile) {
-        pile.addEventListener('click', function (e) {
-            var card = e.target.closest('.postcard');
-            if (card && card !== pile.lastElementChild) pile.appendChild(card);
-        });
-    });
-</script>
 </body>
 </html>
