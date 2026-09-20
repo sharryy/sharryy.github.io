@@ -121,18 +121,19 @@
             transition: filter 0.35s ease;
         }
 
-        .postcard:nth-child(1) { transform: rotate(4deg) translateX(6px); }
-        .postcard:nth-child(2) { transform: rotate(-2.5deg); }
-        .postcard:nth-child(3) { transform: rotate(1.5deg) translate(3px, 4px); }
+        .postcard:nth-child(1) { transform: rotate(4deg) translateX(6px); z-index: 1; }
+        .postcard:nth-child(2) { transform: rotate(-2.5deg); z-index: 2; }
+        .postcard:nth-child(3) { transform: rotate(1.5deg) translate(3px, 4px); z-index: 3; }
 
+        /* hover: the buried card comes to the front of the pile */
         .postcards:hover .postcard:nth-child(1),
-        .postcards:focus-within .postcard:nth-child(1) { transform: rotate(7deg) translate(34%, 42%); }
+        .postcards:focus-within .postcard:nth-child(1) { transform: rotate(-3deg) translate(6%, 8%); z-index: 4; }
 
         .postcards:hover .postcard:nth-child(2),
-        .postcards:focus-within .postcard:nth-child(2) { transform: rotate(-4deg) translate(-5%, -3%); }
+        .postcards:focus-within .postcard:nth-child(2) { transform: rotate(5deg) translate(-4%, -3%); }
 
         .postcards:hover .postcard:nth-child(3),
-        .postcards:focus-within .postcard:nth-child(3) { transform: rotate(2deg) translate(15%, 20%); }
+        .postcards:focus-within .postcard:nth-child(3) { transform: rotate(2deg) translate(10%, 14%); }
 
         .postcards:hover .postcard img,
         .postcards:focus-within .postcard img {
