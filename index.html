@@ -2,210 +2,209 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Sharryy</title>
-
-    <!-- font link -->
-    <link rel="preconnect" href="/fonts/dank-mono-regular.otf"/>
-    <link rel="stylesheet" href="tailwind.css"/>
     <link rel="icon" type="image/x-icon" href="logo.svg">
+    <style>
+        @font-face {
+            font-family: "Dank Mono";
+            src: url("fonts/dank-mono-regular.otf") format("opentype");
+            font-display: swap;
+        }
+
+        :root {
+            --bg: #0d0f0e;
+            --text: #c9c9c9;
+            --dim: #6f6f6f;
+            --accent: #35c98a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Dank Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        main {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 4rem 1.25rem 6rem;
+        }
+
+        .joke {
+            color: var(--dim);
+            font-size: 0.85rem;
+            margin-bottom: 4rem;
+        }
+
+        h1 {
+            color: var(--accent);
+            font-size: 2rem;
+            font-weight: normal;
+        }
+
+        .tagline {
+            margin-top: 0.5rem;
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            color: var(--accent);
+            font-size: 1rem;
+            font-weight: normal;
+            margin: 2.5rem 0 0.75rem;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 0.75rem;
+        }
+
+        .dates {
+            color: var(--dim);
+            font-size: 0.85rem;
+        }
+
+        .detail {
+            color: var(--dim);
+            font-size: 0.9rem;
+        }
+
+        a {
+            color: var(--text);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        .places {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-flow: dense;
+            gap: 0.5rem;
+        }
+
+        /* mosaic: every 1st of 3 tiles is a big 2x2 */
+        .places figure:nth-child(3n + 1) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .places figure {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .places figure img {
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(1) contrast(1.05);
+            transition: filter 0.35s ease;
+        }
+
+        .places figure:hover img,
+        .places figure:focus-within img {
+            filter: grayscale(0) saturate(1.15);
+        }
+
+        .places figcaption {
+            position: absolute;
+            left: 0.5rem;
+            bottom: 0.4rem;
+            color: #eee;
+            font-size: 0.8rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .places figure:hover figcaption,
+        .places figure:focus-within figcaption {
+            opacity: 1;
+        }
+
+        .links {
+            margin-top: 3.5rem;
+        }
+
+        .links a {
+            margin-right: 1.25rem;
+        }
+    </style>
 </head>
-<body class="font-dank-mono">
-<div id="__next">
-    <main>
-        <div class="container mx-auto px-4 py-8">
-            <div class="flex flex-col gap-24">
-                <div class="flex items-center justify-between">
-                    <a href="/"
-                    ><span class="sr-only">Logo</span
-                    ><img
-                            alt="Sharry"
-                            loading="lazy"
-                            width="100"
-                            height="100"
-                            decoding="async"
-                            data-nimg="1"
-                            class="h-[32px] w-auto"
-                            style="color: transparent"
-                            src="/logo.svg"
-                    /></a>
-                    <p class="text-[#484848]">.css.fear { position: relative, display: none};</p>
-                </div>
-                <div
-                        class="flex flex-col items-center gap-6 md:items-start"
-                >
-                    <div
-                            class="flex flex-col items-center md:items-start"
-                    >
-                        <p
-                                class="text-center text-2xl font-normal leading-9 md:text-start md:text-3xl"
-                        >
-                            Hello I’m
-                        </p>
-                        <h1
-                                class="text-center text-5xl font-normal leading-[72px] text-[#0E8151] md:text-start md:text-6xl"
-                        >
-                            Shehryar Amin
-                        </h1>
-                    </div>
-                    <p
-                            class="text-center text-lg font-normal leading-10 text-[#414141] md:w-[50%] md:text-start md:text-2xl"
-                    >
-                        A software engineer who knows their way around
-                        backend-stuff, but still Googles syntax like
-                        everyone else
-                    </p>
-                </div>
-                <div class="flex flex-col items-center gap-6 md:items-start">
-                    <h2 class="text-center text-4xl font-normal leading-[38px] text-[#0E8151] md:text-start">
-                        Companies I have worked with
-                    </h2>
-                    <div class="flex flex-wrap justify-center gap-4 md:justify-start">
-                        <div class="flex h-40 w-40 items-center justify-center rounded-lg border border-solid border-[#E8E8E8] bg-[#FCFCFC]">
-                            <a href="https://devzone.services/"
-                               target="__blank">
-                                <img
-                                        alt="DevZone"
-                                        loading="lazy"
-                                        width="100"
-                                        height="100"
-                                        decoding="async"
-                                        data-nimg="1"
-                                        class="h-20 w-20"
-                                        style="color: transparent"
-                                        src="/assets/devzone.svg"
-                                />
-                            </a>
-                        </div>
-                        <div class="flex h-40 w-40 items-center justify-center rounded-lg border border-solid border-[#E8E8E8] bg-[#FCFCFC]">
-                            <a href="https://valyriansys.com/"
-                               target="__blank">
-                                <img
-                                        alt="Valyrian Systems"
-                                        loading="lazy"
-                                        width="100"
-                                        height="100"
-                                        decoding="async"
-                                        data-nimg="1"
-                                        class="h-20 w-20"
-                                        style="color: transparent"
-                                        src="/assets/valyrian.svg"
-                                />
-                            </a>
-                        </div>
-                        <div class="flex h-40 w-40 items-center justify-center rounded-lg border border-solid border-[#E8E8E8] bg-[#FCFCFC]">
-                            <a href="https://splittrip.co.uk/"
-                               target="__blank">
-                                <img
-                                        alt="SplitTrip"
-                                        loading="lazy"
-                                        width="100"
-                                        height="100"
-                                        decoding="async"
-                                        data-nimg="1"
-                                        class="h-20 w-20"
-                                        style="color: transparent"
-                                        src="/assets/splittrip.svg"
-                                />
-                            </a>
-                        </div>
-                        <div class="flex h-40 w-40 items-center justify-center rounded-lg border border-solid border-[#E8E8E8] bg-[#FCFCFC]">
-                            <a href="https://redlayers.com/"
-                               target="__blank">
-                                <img
-                                        alt="RedLayers"
-                                        loading="lazy"
-                                        width="100"
-                                        height="100"
-                                        decoding="async"
-                                        data-nimg="1"
-                                        class="h-20 w-20"
-                                        style="color: transparent"
-                                        src="/assets/redlayers.svg"
-                                />
-                            </a>
-                        </div>
-                        <div class="flex h-40 w-40 items-center justify-center rounded-lg border border-solid border-[#E8E8E8] bg-[#FCFCFC]">
-                            <a href="https://inisev.com/"
-                               target="__blank">
-                                <img
-                                        alt="Inisev"
-                                        loading="lazy"
-                                        width="100"
-                                        height="100"
-                                        decoding="async"
-                                        data-nimg="1"
-                                        class="h-20 w-20"
-                                        style="color: transparent"
-                                        src="/assets/inisev.svg"
-                                />
-                            </a>
-                        </div>
-                        <div class="flex h-40 w-40 items-center justify-center rounded-lg border border-solid border-[#E8E8E8] bg-[#FCFCFC]">
-                            <a href="https://syllaby.io/"
-                               target="__blank">
-                                <img
-                                        alt="Syllaby"
-                                        loading="lazy"
-                                        width="164"
-                                        height="40"
-                                        decoding="async"
-                                        data-nimg="1"
-                                        class="h-20 w-20"
-                                        style="color: transparent"
-                                        src="/assets/syllaby.svg"
-                                />
-                            </a>
-                        </div>
-                        <div class="flex h-40 w-40 items-center justify-center rounded-lg border border-solid border-[#E8E8E8] bg-[#FCFCFC]">
-                            <a href="https://www.flowerstation.co.uk/"
-                               target="__blank">
-                                <img
-                                        alt="Flower Station"
-                                        loading="lazy"
-                                        width="100"
-                                        height="100"
-                                        decoding="async"
-                                        data-nimg="1"
-                                        class="h-20 w-20"
-                                        style="color: transparent"
-                                        src="/assets/flowerstation.svg"
-                                />
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex flex-row flex-wrap items-start justify-center gap-6 md:justify-end">
-                    <a class="text-xl font-normal leading-[29px] text-[#484848] hover:underline"
-                       target="__blank"
-                       href="https://github.com/sharryy">
-                        Github
-                    </a>
-                    <a class="text-xl font-normal leading-[29px] text-[#484848] hover:underline"
-                       href=""
-                       id="resume">
-                        Resume
-                    </a>
-                    <a class="text-xl font-normal leading-[29px] text-[#484848] hover:underline"
-                       target="__blank"
-                       href="https://www.linkedin.com/in/sharryy/">
-                        LinkedIn
-                    </a>
-                    <a class="text-xl font-normal leading-[29px] text-[#484848] hover:underline"
-                       target="__blank"
-                       href="mailto:sharryy388@gmail.com">
-                        Email
-                    </a>
-                </div>
-            </div>
-        </div>
-    </main>
-</div>
+<body>
+<main>
+    <p class="joke">.css.fear { position: relative, display: none}; /* even the AI won't fix this */</p>
+
+    <p>Hello I&rsquo;m</p>
+    <h1>Shehryar Amin</h1>
+    <p class="tagline">A software engineer who knows their way around backend-stuff, but still
+        Googles syntax like everyone else</p>
+
+    <h2>now</h2>
+    <ul>
+        <li>MSc Computer Science at Uppsala University <span class="dates">2025&ndash;2027</span><br>
+            <span class="detail">also a research assistant: symbolic execution for IoT protocol testing, found
+            memory corruption bugs in libcoap (CVEs pending)</span></li>
+    </ul>
+
+    <h2>before</h2>
+    <ul>
+        <li>Backend Engineer, <a href="https://redirhub.com" target="_blank" rel="noopener">Redirhub</a>
+            <span class="dates">2024&ndash;2026</span><br>
+            <span class="detail">Go, Kafka, ClickHouse; 115M+ click events a day</span></li>
+        <li>Backend Engineer, <a href="https://syllaby.io" target="_blank" rel="noopener">Syllaby</a>
+            <span class="dates">2023&ndash;2025</span><br>
+            <span class="detail">AI video generation pipelines, Stripe ETL, social publishing for 6 platforms</span></li>
+        <li>Backend Engineer, <a href="https://redlayers.com" target="_blank" rel="noopener">RedLayers</a>
+            <span class="dates">2022&ndash;2023</span><br>
+            <span class="detail">query optimization, 3D modeling backend</span></li>
+        <li><span class="detail">earlier: DevZone, Valyrian Systems, SplitTrip, Inisev, Flower Station</span></li>
+    </ul>
+
+    <!-- PLACES: to add a photo, drop an 800x800 jpg in assets/travel/ and copy a <figure> block.
+         Resize + strip metadata with:
+         magick IN.jpg -strip -resize 800x800^ -gravity center -extent 800x800 -quality 82 assets/travel/OUT.jpg -->
+    <h2>places</h2>
+    <div class="places">
+        <figure>
+            <img src="assets/travel/thailand-dropzone.jpg" alt="At Dropzone Thailand before a skydive" loading="lazy">
+            <figcaption>thailand</figcaption>
+        </figure>
+        <figure>
+            <img src="assets/travel/thailand-plane.jpg" alt="Boarding the jump plane" loading="lazy">
+            <figcaption>thailand</figcaption>
+        </figure>
+        <figure>
+            <img src="assets/travel/thailand-freefall.jpg" alt="Freefall over the Thai coast" loading="lazy">
+            <figcaption>thailand, from above</figcaption>
+        </figure>
+    </div>
+
+    <p class="links">
+        <a href="https://github.com/sharryy" target="_blank" rel="noopener">Github</a>
+        <a href="https://www.linkedin.com/in/sharryy/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:ibneadam388@gmail.com">Email</a>
+        <a href="resume.pdf" target="_blank" rel="noopener">Resume</a>
+    </p>
+</main>
 </body>
 </html>
-<script>
-    document.getElementById('resume').addEventListener('click', function () {
-        alert('Resume is under construction yet. Please check back later.');
-    });
-</script>
