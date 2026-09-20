@@ -95,14 +95,14 @@
         .decks {
             display: flex;
             flex-wrap: wrap;
-            gap: 3rem 4rem;
+            gap: 2.75rem 2.5rem;
             padding: 1rem 0 1.5rem;
         }
 
         .deck {
             position: relative;
-            width: 190px;
-            height: 190px;
+            width: 160px;
+            height: 160px;
             outline: none;
         }
 
@@ -114,7 +114,13 @@
             object-fit: cover;
             border-radius: 5px;
             border: 1px solid #2a2d2b;
-            transition: transform 0.35s ease;
+            filter: grayscale(1) contrast(1.05);
+            transition: transform 0.35s ease, filter 0.35s ease;
+        }
+
+        .deck:hover img,
+        .deck:focus-within img {
+            filter: grayscale(0) saturate(1.1);
         }
 
         .deck img:nth-child(1) { transform: rotate(-5deg); }
@@ -182,19 +188,49 @@
         <li><span class="detail">earlier: DevZone, Valyrian Systems, SplitTrip, Inisev, Flower Station</span></li>
     </ul>
 
-    <!-- PLACES: one .deck per country, 2-4 imgs each (cards fan out on hover).
+    <!-- PLACES: one .deck per country, 2-4 imgs each (cards fan out and colour up on hover).
          To add a country: copy a <figure class="deck"> block.
          To add a photo: convert it with
-         magick IN.jpg -strip -resize 400x400^ -gravity center -extent 400x400 \
-           -colorspace Gray -brightness-contrast 5x22 -ordered-dither o4x4 -quality 90 assets/travel/OUT.jpg
-         then add an <img> line inside the deck. -->
+         magick IN.jpg -strip -resize 600x600^ -gravity center -extent 600x600 -quality 85 assets/travel/OUT.jpg
+         then add an <img> line inside the deck (replace the placeholder imgs). -->
     <h2>places</h2>
     <div class="decks">
         <figure class="deck" tabindex="0">
             <img src="assets/travel/thailand-1.jpg" alt="At Dropzone Thailand before a skydive" loading="lazy">
-            <img src="assets/travel/thailand-2.jpg" alt="Boarding the jump plane" loading="lazy">
-            <img src="assets/travel/thailand-3.jpg" alt="Freefall over the Thai coast" loading="lazy">
+            <img src="assets/travel/thailand-2.jpg" alt="Freefall over the Thai coast" loading="lazy">
+            <img src="assets/travel/thailand-3.jpg" alt="Boarding the jump plane" loading="lazy">
+            <img src="assets/travel/thailand-4.jpg" alt="Suited up before the jump" loading="lazy">
             <figcaption>thailand</figcaption>
+        </figure>
+        <figure class="deck" tabindex="0">
+            <img src="assets/travel/morocco-1.jpg" alt="Morocco placeholder" loading="lazy">
+            <img src="assets/travel/morocco-2.jpg" alt="Morocco placeholder" loading="lazy">
+            <figcaption>morocco</figcaption>
+        </figure>
+        <figure class="deck" tabindex="0">
+            <img src="assets/travel/indonesia-1.jpg" alt="Indonesia placeholder" loading="lazy">
+            <img src="assets/travel/indonesia-2.jpg" alt="Indonesia placeholder" loading="lazy">
+            <figcaption>indonesia</figcaption>
+        </figure>
+        <figure class="deck" tabindex="0">
+            <img src="assets/travel/malaysia-1.jpg" alt="Malaysia placeholder" loading="lazy">
+            <img src="assets/travel/malaysia-2.jpg" alt="Malaysia placeholder" loading="lazy">
+            <figcaption>malaysia</figcaption>
+        </figure>
+        <figure class="deck" tabindex="0">
+            <img src="assets/travel/singapore-1.jpg" alt="Singapore placeholder" loading="lazy">
+            <img src="assets/travel/singapore-2.jpg" alt="Singapore placeholder" loading="lazy">
+            <figcaption>singapore</figcaption>
+        </figure>
+        <figure class="deck" tabindex="0">
+            <img src="assets/travel/sweden-1.jpg" alt="Sweden placeholder" loading="lazy">
+            <img src="assets/travel/sweden-2.jpg" alt="Sweden placeholder" loading="lazy">
+            <figcaption>sweden</figcaption>
+        </figure>
+        <figure class="deck" tabindex="0">
+            <img src="assets/travel/belgium-1.jpg" alt="Belgium placeholder" loading="lazy">
+            <img src="assets/travel/belgium-2.jpg" alt="Belgium placeholder" loading="lazy">
+            <figcaption>belgium</figcaption>
         </figure>
     </div>
 
