@@ -102,6 +102,8 @@
             margin: 0 0 1.5rem 2rem;
         }
 
+        /* hover is decided by the container's fixed box only (cards don't
+           capture the pointer), so the pile can't flicker as cards move */
         .postcard {
             position: absolute;
             top: 0;
@@ -111,23 +113,25 @@
             background: #f2f0ea;
             border-radius: 2px;
             box-shadow: 0 8px 22px rgba(0, 0, 0, 0.55);
-            transition: transform 0.35s ease;
+            pointer-events: none;
+            transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), z-index 0s 0.2s;
         }
 
         .postcard img {
             width: 100%;
             display: block;
             filter: grayscale(1) contrast(1.05);
-            transition: filter 0.35s ease;
+            transition: filter 0.5s ease;
         }
 
         .postcard:nth-child(1) { transform: rotate(4deg) translateX(6px); z-index: 1; }
         .postcard:nth-child(2) { transform: rotate(-2.5deg); z-index: 2; }
         .postcard:nth-child(3) { transform: rotate(1.5deg) translate(3px, 4px); z-index: 3; }
 
-        /* hover: the buried card comes to the front of the pile */
+        /* hover: the buried card glides to the front of the pile
+           (z swap is delayed to the middle of the move) */
         .postcards:hover .postcard:nth-child(1),
-        .postcards:focus-within .postcard:nth-child(1) { transform: rotate(-3deg) translate(6%, 8%); z-index: 4; }
+        .postcards:focus-within .postcard:nth-child(1) { transform: rotate(-3deg) translate(8%, 10%); z-index: 4; }
 
         .postcards:hover .postcard:nth-child(2),
         .postcards:focus-within .postcard:nth-child(2) { transform: rotate(5deg) translate(-4%, -3%); }
